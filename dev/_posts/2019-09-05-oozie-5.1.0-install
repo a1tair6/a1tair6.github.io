@@ -1,0 +1,178 @@
+# oozie 5.1.0 설치 with docker
+- base linux image : alpine
+
+## base images
+```
+FROM java:openjdk-8-jdk-alpine
+MAINTAINER aiden
+
+RUN apk update && \
+    apk add zip && \
+    apk add unzip && \
+    apk add wget && \
+    apk add bash
+
+# setting
+RUN adduser -D hadoop && \
+    mkdir /home/hadoop/installed && \
+    mkdir /home/hadoop/eco_service && \
+    mkdir -p /hadoop/ && \
+    chown hadoop.hadoop -R /hadoop && \
+    chown -R hadoop.hadoop /home/hadoop/installed /home/hadoop/eco_service && \
+    su hadoop && \
+    cd /home/hadoop/installed
+
+WORKDIR /home/hadoop/installed
+```
+
+- ** binary 를 build 하기 위해 docker 안에서 명령 실행 **
+- ** docker command로 해봤지만 size가 너무 커짐 **
+
+
+## docker run
+```
+docker run -it {images_id} bash
+```
+
+## maven, hadoop, oozie binary download
+```
+wget http://xenia.sote.hu/ftp/mirrors/www.apache.org/maven/maven-3/3.3.9/binaries/apache-maven-3.3.9-bin.tar.gz && \
+tar -xvf apache-maven-3.3.9-bin.tar.gz && \
+rm apache-maven-3.3.9-bin.tar.gz
+wget http://apache.mirror.cdnetworks.com/oozie/5.1.0/oozie-5.1.0.tar.gz && \
+tar -xvf oozie-5.1.0.tar.gz && \
+rm oozie-5.1.0.tar.gz
+wget http://apache.mirror.cdnetworks.com/hadoop/common/hadoop-3.1.2/hadoop-3.1.2.tar.gz && \
+tar -xvf hadoop-3.1.2.tar.gz && \
+rm hadoop-3.1.2.tar.gz
+
+```
+
+## hadoop, oozie soft link
+```
+ln -s /home/hadoop/installed/hadoop-3.1.2/ /home/hadoop/eco_service/hadoop
+ln -s /home/hadoop/installed/oozie-5.1.0/ /home/hadoop/eco_service/oozie
+
+export JAVA_HOME=/usr/lib/jvm/java-1.8-openjdk
+export MAVEN_HOME=/home/hadoop/installed/apache-maven-3.3.9
+export HIVE_HOME=/home/hadoop/eco_service/hive
+export HADOOP_HOME=/home/hadoop/eco_service/hadoop
+export LD_LIBRARY_PATH="$HADOOP_HOME/lib/native"
+export HADOOP_COMMON_HOME=$HADOOP_HOME
+export HADOOP_HDFS_HOME=$HADOOP_HOME
+export HADOOP_MAPRED_HOME=$HADOOP_HOME
+export HADOOP_YARN_HOME=$HADOOP_HOME
+export OOZIE_HOME=/home/hadoop/eco_service/oozie
+export PATH=$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin:$HIVE_HOME/bin:$SPARK_HOME/bin:$LD_LIBRARY_PATH:$OOZIE_HOME/bin:$MAVEN_HOME/bin
+```
+
+## oozie build
+```
+cd /home/hadoop/installed/oozie-5.1.0 && \
+mvn clean package assembly:single -P uber,hadoop-3 -Dhive.verson=3.1.2 -Dtez.version=0.9.2 -DskipTests
+cd /home/hadoop/installed/oozie-5.1.0/distro/target && \
+cp oozie-5.1.0-distro.tar.gz /home/hadoop/installed && \
+cd /home/hadoop/installed/ && \
+mv oozie-5.1.0 oozie-5.1.0-build && \
+tar -xvf oozie-5.1.0-distro.tar.gz && \
+rm oozie-5.1.0-distro.tar.gz && \
+cd /home/hadoop/eco_service
+
+mkdir /home/hadoop/eco_service/oozie/libext && \
+cd /home/hadoop/eco_service/oozie/libext
+wget http://archive.cloudera.com/gplextras/misc/ext-2.2.zip
+wget https://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-java-8.0.16.tar.gz
+
+cd /home/hadoop/eco_service/oozie/libext
+cp /home/hadoop/eco_service/hadoop/share/hadoop/common/*.jar . && \
+cp /home/hadoop/eco_service/hadoop/share/hadoop/common/lib/*.jar . && \
+cp /home/hadoop/eco_service/hadoop/share/hadoop/hdfs/*.jar . && \
+cp /home/hadoop/eco_service/hadoop/share/hadoop/hdfs/lib/*.jar . && \
+cp /home/hadoop/eco_service/hadoop/share/hadoop/mapreduce/*.jar . && \
+cp /home/hadoop/eco_service/hadoop/share/hadoop/mapreduce/lib/*.jar . && \
+cp /home/hadoop/eco_service/hadoop/share/hadoop/yarn/*.jar . && \
+cp /home/hadoop/eco_service/hadoop/share/hadoop/yarn/lib/*.jar . && \
+cp /home/hadoop/eco_service/hadoop/share/hadoop/tools/*.jar . && \
+cp /home/hadoop/eco_service/hadoop/share/hadoop/tools/lib/*.jar . && \
+cp /home/hadoop/eco_service/hadoop/share/hadoop/client/*.jar . && \
+cp /home/hadoop/eco_service/hadoop/share/hadoop/client/lib/*.jar .
+```
+
+
+## oozie add extends lib
+```
+bin/oozie-setup.sh
+```
+
+## docker images 생성
+```
+docker commit -m "initial oozie" -a "user_id" {container_id} {tag_name}
+```
+
+## docker images push
+```
+docker push {tag_name}
+```
+
+- ** 여기까지 기본 images **
+- ** 설정파일 보안상 image version 나눔 **
+
+## hadoop, oozie config setting
+```
+FROM a1tair/oozie:0.1
+MAINTAINER aiden
+
+USER hadoop
+
+ENV JAVA_HOME /usr/lib/jvm/java-1.8-openjdk
+ENV MAVEN_HOME /home/hadoop/installed/apache-maven-3.3.9
+ENV HIVE_HOME /home/hadoop/eco_service/hive
+ENV HADOOP_HOME /home/hadoop/eco_service/hadoop
+ENV LD_LIBRARY_PATH "$HADOOP_HOME/lib/native"
+ENV HADOOP_COMMON_HOME $HADOOP_HOME
+ENV HADOOP_HDFS_HOME $HADOOP_HOME
+ENV HADOOP_MAPRED_HOME $HADOOP_HOME
+ENV HADOOP_YARN_HOME $HADOOP_HOME
+ENV OOZIE_HOME /home/hadoop/eco_service/oozie
+ENV PATH $PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin:$HIVE_HOME/bin:$SPARK_HOME/bin:$LD_LIBRARY_PATH:$OOZIE_HOME/bin:$MAVEN_HOME/bin
+
+COPY --chown=hadoop:hadoop oozie-site.xml /home/hadoop/eco_service/oozie/conf
+COPY --chown=hadoop:hadoop yarn-site.xml /home/hadoop/eco_service/hadoop/etc/hadoop
+COPY --chown=hadoop:hadoop hdfs-site.xml /home/hadoop/eco_service/hadoop/etc/hadoop
+COPY --chown=hadoop:hadoop core-site.xml /home/hadoop/eco_service/hadoop/etc/hadoop
+COPY --chown=hadoop:hadoop mapred-site.xml /home/hadoop/eco_service/hadoop/etc/hadoop
+COPY --chown=hadoop:hadoop oozie-env.sh /home/hadoop/eco_service/oozie/conf
+COPY --chown=hadoop:hadoop hadoop-env.sh /home/hadoop/eco_service/hadoop/etc/hadoop
+
+WORKDIR /home/hadoop/eco_service/oozie
+
+# Oozie web port
+EXPOSE 11000 11001
+
+ENV PATH $OOZIE_HOME/bin:$PATH
+
+CMD ["bin/oozied.sh", "run"]
+```
+
+
+- oozie 5.1.0 에서 spark2 lib가 기본적으로 추가되어 있지 않다.
+- 따로 추가
+
+## add spark2 lib
+```
+oozie-setup.sh sharelib create -fs hdfs://{hostname}:8020 -locallib oozie-sharelib-*.tar.gz
+
+hadoop fs -mkdir /user/oozie/share/lib/lib_{timestamp}/spark2
+hadoop fs -cp /user/oozie/share/lib/lib_{timestamp}/spark/oozie-sharelib-spark-*-jar /user/oozie/share/lib/lib_{timestamp}/spark2
+hadoop fs -put ${SPARK_HOME}/jars/* /user/oozie/share/lib/lib_{timestamp}/spark2
+hadoop fs -put ${SPARK_HOME}/conf/hive-site.xml /user/oozie/share/lib/lib_{timestamp}/spark2
+hadoop fs -put ${SPARK_HOME}/python/lib/py* /user/oozie/share/lib/lib_{timestamp}/spark2
+# sharelib update
+oozie admin -sharelibupdate
+# 확인
+oozie admin -shareliblist spark2
+```
+
+- oozie 5.1.0 build 시 hadoop-3 profile이 안 먹힘.
+- war에 2.6.0 version이 존재 하여 삭제 후 진행
+- 
