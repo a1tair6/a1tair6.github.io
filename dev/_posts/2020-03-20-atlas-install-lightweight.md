@@ -78,6 +78,8 @@ CMD ["/bin/bash", "-c", "/usr/lib/atlas/bin/atlas_start.py; tail -fF /usr/lib/at
 ```
 
 - ** issue **
+	- build 안 됨. pom.xml repo 추가
+	- atlas_config.py, atlas_start.py 소스 수정 후 start 
 	- embedded 된 solr, hbase를 사용하려다 보니 atlas로 띄우면 권한 문제가 발생함. 해서 root로
 	- hadoop binary와 hbase 가 안 맞음. hbase 시작 할 때 에러 뿜뿜
 ```
