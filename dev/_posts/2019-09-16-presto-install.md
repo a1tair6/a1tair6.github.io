@@ -92,11 +92,11 @@ discovery.uri=http://presto-qxqmc:8080
 ### docker-presto.sh
 ```
 #!/bin/bash
-echo "10.40.11.128 lz-edw-nn-001-01" >> /etc/hosts
-echo "10.40.12.187 lz-edw-nn-001-02" >> /etc/hosts
-echo "10.40.11.136 lz-edw-dn-001-01" >> /etc/hosts
-echo "10.40.12.236 lz-edw-dn-001-02" >> /etc/hosts
-echo "10.40.12.173 lz-edw-dn-001-03" >> /etc/hosts
+echo "ip lz-edw-nn-001-01" >> /etc/hosts
+echo "ip lz-edw-nn-001-02" >> /etc/hosts
+echo "ip lz-edw-dn-001-01" >> /etc/hosts
+echo "ip lz-edw-dn-001-02" >> /etc/hosts
+echo "ip lz-edw-dn-001-03" >> /etc/hosts
 cp /etc/presto/*.properties $PRESTO_CONF_DIR
 cp /etc/presto/*.config $PRESTO_CONF_DIR
 cp /etc/presto/hive.properties $PRESTO_CONF_DIR/catalog
