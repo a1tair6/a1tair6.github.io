@@ -185,7 +185,7 @@ CMD ["/bin/bash", "-c", "tail -f /home/atlas/eco_service/atlas/logs/application.
 
     <property>
         <name>hive.metastore.uris</name>
-        <value>thrift://lz-edw-nn-001-02:9083</value>
+        <value>thrift://host-nn-001-02:9083</value>
     </property>
 
     <property>
@@ -195,7 +195,7 @@ CMD ["/bin/bash", "-c", "tail -f /home/atlas/eco_service/atlas/logs/application.
 
      <property>
         <name>hive.server2.thrift.bind.host</name>
-        <value>lz-edw-nn-001-02</value>
+        <value>host-nn-001-02</value>
     </property>
 
      <property>
@@ -245,7 +245,7 @@ CMD ["/bin/bash", "-c", "tail -f /home/atlas/eco_service/atlas/logs/application.
 
     <property>
         <name>hive.server2.webui.host</name>
-        <value>lz-edw-nn-001-02</value>
+        <value>host-nn-001-02</value>
     </property>
 
     <property>
@@ -403,15 +403,15 @@ export HIVE_AUX_JARS_PATH=/home/atlas/eco_service/atlas/hook/hive
     </property>
 <property>
         <name>yarn.resourcemanager.hostname.rm1</name>
-        <value>lz-edw-nn-001-02</value>
+        <value>host-nn-001-02</value>
     </property>
     <property>
         <name>yarn.resourcemanager.hostname.rm2</name>
-        <value>lz-edw-nn-001-01</value>
+        <value>host-nn-001-01</value>
     </property>
     <property>
         <name>hadoop.zk.address</name>
-        <value>lz-edw-nn-001-01:2181,lz-edw-nn-001-02:2181,lz-edw-dn-001-01:2181</value>
+        <value>host-nn-001-01:2181,host-nn-001-02:2181,host-dn-001-01:2181</value>
     </property>
     <property>
         <name>yarn.resourcemanager.ha.automatic-failover.enabled</name>
@@ -436,44 +436,44 @@ export HIVE_AUX_JARS_PATH=/home/atlas/eco_service/atlas/hook/hive
 
     <property>
         <name>yarn.resourcemanager.address.rm1</name>
-        <value>lz-edw-nn-001-02:8032</value>
+        <value>host-nn-001-02:8032</value>
     </property>
     <property>
         <name>yarn.resourcemanager.scheduler.address.rm1</name>
-        <value>lz-edw-nn-001-02:8030</value>
+        <value>host-nn-001-02:8030</value>
     </property>
     <property>
         <name>yarn.resourcemanager.webapp.address.rm1</name>
-        <value>lz-edw-nn-001-02:8088</value>
+        <value>host-nn-001-02:8088</value>
     </property>
     <property>
         <name>yarn.resourcemanager.resource-tracker.address.rm1</name>
-<value>lz-edw-nn-001-02:8031</value>
+<value>host-nn-001-02:8031</value>
     </property>
     <property>
         <name>yarn.resourcemanager.admin.address.rm1</name>
-        <value>lz-edw-nn-001-02:8033</value>
+        <value>host-nn-001-02:8033</value>
     </property>
 
     <property>
         <name>yarn.resourcemanager.address.rm2</name>
-        <value>lz-edw-nn-001-01:8032</value>
+        <value>host-nn-001-01:8032</value>
     </property>
     <property>
         <name>yarn.resourcemanager.scheduler.address.rm2</name>
-        <value>lz-edw-nn-001-01:8030</value>
+        <value>host-nn-001-01:8030</value>
     </property>
     <property>
         <name>yarn.resourcemanager.webapp.address.rm2</name>
-        <value>lz-edw-nn-001-01:8088</value>
+        <value>host-nn-001-01:8088</value>
     </property>
     <property>
         <name>yarn.resourcemanager.resource-tracker.address.rm2</name>
-        <value>lz-edw-nn-001-01:8031</value>
+        <value>host-nn-001-01:8031</value>
     </property>
     <property>
         <name>yarn.resourcemanager.admin.address.rm2</name>
-        <value>lz-edw-nn-001-01:8033</value>
+        <value>host-nn-001-01:8033</value>
     </property>
 
     <property>
@@ -512,7 +512,7 @@ export HIVE_AUX_JARS_PATH=/home/atlas/eco_service/atlas/hook/hive
 
     <property>
         <name>yarn.log.server.url</name>
-        <value>http://lz-edw-nn-001-01:19888/jobhistory/logs</value>
+        <value>http://host-nn-001-01:19888/jobhistory/logs</value>
     </property>
 
     <property>
@@ -584,40 +584,40 @@ export HIVE_AUX_JARS_PATH=/home/atlas/eco_service/atlas/hook/hive
 
   <property>
     <name>dfs.nameservices</name>
-    <value>lz-edw-cluster</value>
+    <value>host-cluster</value>
   </property>
 
   <property>
-    <name>dfs.ha.namenodes.lz-edw-cluster</name>
+    <name>dfs.ha.namenodes.host-cluster</name>
     <value>nn1,nn2</value>
   </property>
 
   <property>
-    <name>dfs.namenode.rpc-address.lz-edw-cluster.nn1</name>
-    <value>lz-edw-nn-001-01:8020</value>
+    <name>dfs.namenode.rpc-address.host-cluster.nn1</name>
+    <value>host-nn-001-01:8020</value>
   </property>
 
   <property>
-    <name>dfs.namenode.rpc-address.lz-edw-cluster.nn2</name>
-    <value>lz-edw-nn-001-02:8020</value>
+    <name>dfs.namenode.rpc-address.host-cluster.nn2</name>
+    <value>host-nn-001-02:8020</value>
   </property>
 
   <property>
-    <name>dfs.namenode.http-address.lz-edw-cluster.nn1</name>
-    <value>lz-edw-nn-001-01:50070</value>
+    <name>dfs.namenode.http-address.host-cluster.nn1</name>
+    <value>host-nn-001-01:50070</value>
   </property>
 
   <property>
-    <name>dfs.namenode.http-address.lz-edw-cluster.nn2</name>
-    <value>lz-edw-nn-001-02:50070</value>
+    <name>dfs.namenode.http-address.host-cluster.nn2</name>
+    <value>host-nn-001-02:50070</value>
   </property>
 
   <property>
     <name>dfs.namenode.shared.edits.dir</name>
-    <value>qjournal://lz-edw-nn-001-01:8485;lz-edw-nn-001-02:8485;lz-edw-dn-001-01:8485/lz-edw-cluster</value>
+    <value>qjournal://host-nn-001-01:8485;host-nn-001-02:8485;host-dn-001-01:8485/host-cluster</value>
   </property>
     <property>
-    <name>dfs.client.failover.proxy.provider.lz-edw-cluster</name>
+    <name>dfs.client.failover.proxy.provider.host-cluster</name>
     <value>org.apache.hadoop.hdfs.server.namenode.ha.ConfiguredFailoverProxyProvider</value>
   </property>
 
@@ -662,12 +662,12 @@ export HIVE_AUX_JARS_PATH=/home/atlas/eco_service/atlas/hook/hive
 <configuration>
     <property>
        <name>fs.defaultFS</name>
-        <value>hdfs://lz-edw-cluster</value>
+        <value>hdfs://host-cluster</value>
     </property>
 
     <property>
         <name>ha.zookeeper.quorum</name>
-        <value>lz-edw-nn-001-01:2181,lz-edw-nn-001-02:2181,lz-edw-dn-001-01:2181</value>
+        <value>host-nn-001-01:2181,host-nn-001-02:2181,host-dn-001-01:2181</value>
     </property>
 
     <property>
@@ -802,11 +802,11 @@ export HIVE_AUX_JARS_PATH=/home/atlas/eco_service/atlas/hook/hive
 
     <property>
         <name>mapreduce.jobhistory.address</name>
-        <value>lz-edw-nn-001-01:10020</value>
+        <value>host-nn-001-01:10020</value>
     </property>
     <property>
         <name>mapreduce.jobhistory.webapp.address</name>
-        <value>lz-edw-nn-001-01:19888</value>
+        <value>host-nn-001-01:19888</value>
     </property>
 
     <!--property>

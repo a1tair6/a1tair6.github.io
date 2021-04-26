@@ -298,7 +298,7 @@ ENTRYPOINT ["bash", "start_script.sh"]
 
     [[[default]]]
       # Enter the filesystem uri
-      fs_defaultfs=hdfs://lz-edw-nn-001-01:8020
+      fs_defaultfs=hdfs://host-nn-001-01:8020
 
       # NameNode logical name.
       logical_name=
@@ -306,7 +306,7 @@ ENTRYPOINT ["bash", "start_script.sh"]
       # Use WebHdfs/HttpFs as the communication mechanism.
       # Domain should be the NameNode or HttpFs host.
       # Default port is 14000 for HttpFs.
-      webhdfs_url=http://lz-edw-nn-001-01:50070/webhdfs/v1
+      webhdfs_url=http://host-nn-001-01:50070/webhdfs/v1
 
       # In secure mode (HTTPS), if SSL certificates from YARN Rest APIs
       # have to be verified against certificate authority
@@ -321,7 +321,7 @@ ENTRYPOINT ["bash", "start_script.sh"]
 
     [[[default]]]
       # Enter the host on which you are running the ResourceManager
-      resourcemanager_host=lz-edw-nn-001-02
+      resourcemanager_host=host-nn-001-02
 
       # The port where the ResourceManager IPC listens on
       resourcemanager_port=8032
@@ -336,16 +336,16 @@ ENTRYPOINT ["bash", "start_script.sh"]
       security_enabled=false
 
       # URL of the ResourceManager API
-      resourcemanager_api_url=http://lz-edw-nn-001-02:8088
+      resourcemanager_api_url=http://host-nn-001-02:8088
 
       # URL of the ProxyServer API
-      proxy_api_url=http://lz-edw-nn-001-02:8088
+      proxy_api_url=http://host-nn-001-02:8088
 
       # URL of the HistoryServer API
-      history_server_api_url=http://lz-edw-001-01:19888
+      history_server_api_url=http://host-001-01:19888
 
       # URL of the Spark History Server
-      spark_history_server_url=http://lz-edw-nn-001-02:18080
+      spark_history_server_url=http://host-nn-001-02:18080
 
       # Change this if your Spark History Server is Kerberos-secured
       spark_history_server_security_enabled=false
@@ -363,14 +363,14 @@ ENTRYPOINT ["bash", "start_script.sh"]
 
   # Host where HiveServer2 is running.
   # If Kerberos security is enabled, use fully-qualified domain name (FQDN).
-  hive_server_host=lz-edw-nn-001-02
+  hive_server_host=host-nn-001-02
 
   # Port where HiveServer2 Thrift server runs on.
   hive_server_port=10000
 
   # Host where Hive Metastore Server (HMS) is running.
   # If Kerberos security is enabled, the fully-qualified domain name (FQDN) is required.
-  hive_metastore_host=lz-edw-nn-001-02
+  hive_metastore_host=host-nn-001-02
 
   # Configure the port the Hive Metastore Server runs on.
   hive_metastore_port=9083
@@ -416,7 +416,7 @@ ENTRYPOINT ["bash", "start_script.sh"]
   csrf_enabled=false
 
   # Host of the Sql Server
-  sql_server_host=lz-edw-nn-002
+  sql_server_host=host-nn-002
 
   # Port of the Sql Server
   sql_server_port=10001
@@ -613,12 +613,12 @@ ENTRYPOINT ["bash", "start_script.sh"]
 <configuration>
     <property>
        <name>fs.defaultFS</name>
-        <value>hdfs://lz-edw-cluster</value>
+        <value>hdfs://host-cluster</value>
     </property>
 
     <property>
         <name>ha.zookeeper.quorum</name>
-        <value>lz-edw-nn-001-01:2181,lz-edw-nn-001-02:2181,lz-edw-dn-001-01:2181</value>
+        <value>host-nn-001-01:2181,host-nn-001-02:2181,host-dn-001-01:2181</value>
     </property>
 
     <property>
@@ -756,7 +756,7 @@ export HIVE_CONF_DIR=${HIVE_HOME}/conf
 
     <property>
         <name>hive.metastore.uris</name>
-        <value>thrift://lz-edw-nn-001-02:9083</value>
+        <value>thrift://host-nn-001-02:9083</value>
     </property>
 
     <property>
@@ -766,7 +766,7 @@ export HIVE_CONF_DIR=${HIVE_HOME}/conf
 
      <property>
         <name>hive.server2.thrift.bind.host</name>
-        <value>lz-edw-nn-001-02</value>
+        <value>host-nn-001-02</value>
     </property>
 
      <property>
@@ -816,7 +816,7 @@ export HIVE_CONF_DIR=${HIVE_HOME}/conf
 
     <property>
         <name>hive.server2.webui.host</name>
-        <value>lz-edw-nn-001-02</value>
+        <value>host-nn-001-02</value>
     </property>
 
     <property>
@@ -981,11 +981,11 @@ export HIVE_CONF_DIR=${HIVE_HOME}/conf
 
     <property>
         <name>mapreduce.jobhistory.address</name>
-        <value>lz-edw-nn-001-01:10020</value>
+        <value>host-nn-001-01:10020</value>
     </property>
     <property>
         <name>mapreduce.jobhistory.webapp.address</name>
-        <value>lz-edw-nn-001-01:19888</value>
+        <value>host-nn-001-01:19888</value>
     </property>
 
     <!--property>
@@ -1011,9 +1011,9 @@ export HIVE_CONF_DIR=${HIVE_HOME}/conf
 spark.master                     yarn
 spark.submit.deployMode          client
 spark.eventLog.enabled           true
-spark.yarn.jars                  hdfs://lz-edw-cluster/user/oozie/share/lib/lib_20190910061053/spark2/*
-spark.eventLog.dir               hdfs://lz-edw-cluster/user/spark/eventlog
-spark.history.fs.logDirectory    hdfs://lz-edw-cluster/user/spark/historylog
+spark.yarn.jars                  hdfs://host-cluster/user/oozie/share/lib/lib_20190910061053/spark2/*
+spark.eventLog.dir               hdfs://host-cluster/user/spark/eventlog
+spark.history.fs.logDirectory    hdfs://host-cluster/user/spark/historylog
 spark.serializer                 org.apache.spark.serializer.KryoSerializer
 spark.driver.memory              1548m
 #spark.executor.memory            10240m
@@ -1031,8 +1031,8 @@ spark.dynamicAllocation.maxExecutors        100
 spark.shuffle.service.enabled               true
 spark.scheduler.minRegisteredResourcesRatio 0.0
 
-spark.sql.warehouse.dir=hdfs://lz-edw-cluster:8020/user/hive/warehouse
-spark.yarn.historyServer.address            lz-edw-nn-001-02:18080
+spark.sql.warehouse.dir=hdfs://host-cluster:8020/user/hive/warehouse
+spark.yarn.historyServer.address            host-nn-001-02:18080
 
 spark.hadoop.fs.s3a.access.key={access_key}
 spark.hadoop.fs.s3a.endpoint=s3.{region}.amazonaws.com
@@ -1135,15 +1135,15 @@ export PYSPARK_DRIVER_PYTHON=/usr/bin/python3
     </property>
 <property>
         <name>yarn.resourcemanager.hostname.rm1</name>
-        <value>lz-edw-nn-001-02</value>
+        <value>host-nn-001-02</value>
     </property>
     <property>
         <name>yarn.resourcemanager.hostname.rm2</name>
-        <value>lz-edw-nn-001-01</value>
+        <value>host-nn-001-01</value>
     </property>
     <property>
         <name>hadoop.zk.address</name>
-        <value>lz-edw-nn-001-01:2181,lz-edw-nn-001-02:2181,lz-edw-dn-001-01:2181</value>
+        <value>host-nn-001-01:2181,host-nn-001-02:2181,host-dn-001-01:2181</value>
     </property>
     <property>
         <name>yarn.resourcemanager.ha.automatic-failover.enabled</name>
@@ -1168,44 +1168,44 @@ export PYSPARK_DRIVER_PYTHON=/usr/bin/python3
 
     <property>
         <name>yarn.resourcemanager.address.rm1</name>
-        <value>lz-edw-nn-001-02:8032</value>
+        <value>host-nn-001-02:8032</value>
     </property>
     <property>
         <name>yarn.resourcemanager.scheduler.address.rm1</name>
-        <value>lz-edw-nn-001-02:8030</value>
+        <value>host-nn-001-02:8030</value>
     </property>
     <property>
         <name>yarn.resourcemanager.webapp.address.rm1</name>
-        <value>lz-edw-nn-001-02:8088</value>
+        <value>host-nn-001-02:8088</value>
     </property>
     <property>
         <name>yarn.resourcemanager.resource-tracker.address.rm1</name>
-<value>lz-edw-nn-001-02:8031</value>
+<value>host-nn-001-02:8031</value>
     </property>
     <property>
         <name>yarn.resourcemanager.admin.address.rm1</name>
-        <value>lz-edw-nn-001-02:8033</value>
+        <value>host-nn-001-02:8033</value>
     </property>
 
     <property>
         <name>yarn.resourcemanager.address.rm2</name>
-        <value>lz-edw-nn-001-01:8032</value>
+        <value>host-nn-001-01:8032</value>
     </property>
     <property>
         <name>yarn.resourcemanager.scheduler.address.rm2</name>
-        <value>lz-edw-nn-001-01:8030</value>
+        <value>host-nn-001-01:8030</value>
     </property>
     <property>
         <name>yarn.resourcemanager.webapp.address.rm2</name>
-        <value>lz-edw-nn-001-01:8088</value>
+        <value>host-nn-001-01:8088</value>
     </property>
     <property>
         <name>yarn.resourcemanager.resource-tracker.address.rm2</name>
-        <value>lz-edw-nn-001-01:8031</value>
+        <value>host-nn-001-01:8031</value>
     </property>
     <property>
         <name>yarn.resourcemanager.admin.address.rm2</name>
-        <value>lz-edw-nn-001-01:8033</value>
+        <value>host-nn-001-01:8033</value>
     </property>
 
     <property>
@@ -1244,7 +1244,7 @@ export PYSPARK_DRIVER_PYTHON=/usr/bin/python3
 
     <property>
         <name>yarn.log.server.url</name>
-        <value>http://lz-edw-nn-001-01:19888/jobhistory/logs</value>
+        <value>http://host-nn-001-01:19888/jobhistory/logs</value>
     </property>
 
     <property>

@@ -22,12 +22,12 @@ discovery.uri=http://presto-qxqmc:8080
 <configuration>
 <property>
 <name>fs.defaultFS</name>
-<value>hdfs://lz-edw-cluster</value>
+<value>hdfs://host-cluster</value>
 </property>
 
 <property>
 <name>ha.zookeeper.quorum</name>
-<value>lz-edw-nn-001-01:2181,lz-edw-nn-001-02:2181,lz-edw-dn-001-01:2181</value>
+<value>host-nn-001-01:2181,host-nn-001-02:2181,host-dn-001-01:2181</value>
 </property>
 
 <property>
@@ -92,11 +92,11 @@ discovery.uri=http://presto-qxqmc:8080
 ### docker-presto.sh
 ```
 #!/bin/bash
-echo "ip lz-edw-nn-001-01" >> /etc/hosts
-echo "ip lz-edw-nn-001-02" >> /etc/hosts
-echo "ip lz-edw-dn-001-01" >> /etc/hosts
-echo "ip lz-edw-dn-001-02" >> /etc/hosts
-echo "ip lz-edw-dn-001-03" >> /etc/hosts
+echo "ip host-nn-001-01" >> /etc/hosts
+echo "ip host-nn-001-02" >> /etc/hosts
+echo "ip host-dn-001-01" >> /etc/hosts
+echo "ip host-dn-001-02" >> /etc/hosts
+echo "ip host-dn-001-03" >> /etc/hosts
 cp /etc/presto/*.properties $PRESTO_CONF_DIR
 cp /etc/presto/*.config $PRESTO_CONF_DIR
 cp /etc/presto/hive.properties $PRESTO_CONF_DIR/catalog
@@ -149,40 +149,40 @@ limitations under the License. See accompanying LICENSE file.
 
 <property>
 <name>dfs.nameservices</name>
-<value>lz-edw-cluster</value>
+<value>host-cluster</value>
 </property>
 
 <property>
-<name>dfs.ha.namenodes.lz-edw-cluster</name>
+<name>dfs.ha.namenodes.host-cluster</name>
 <value>nn1,nn2</value>
 </property>
 
 <property>
-<name>dfs.namenode.rpc-address.lz-edw-cluster.nn1</name>
-<value>lz-edw-nn-001-01:8020</value>
+<name>dfs.namenode.rpc-address.host-cluster.nn1</name>
+<value>host-nn-001-01:8020</value>
 </property>
 
 <property>
-<name>dfs.namenode.rpc-address.lz-edw-cluster.nn2</name>
-<value>lz-edw-nn-001-02:8020</value>
+<name>dfs.namenode.rpc-address.host-cluster.nn2</name>
+<value>host-nn-001-02:8020</value>
 </property>
 
 <property>
-<name>dfs.namenode.http-address.lz-edw-cluster.nn1</name>
-<value>lz-edw-nn-001-01:50070</value>
+<name>dfs.namenode.http-address.host-cluster.nn1</name>
+<value>host-nn-001-01:50070</value>
 </property>
 
 <property>
-<name>dfs.namenode.http-address.lz-edw-cluster.nn2</name>
-<value>lz-edw-nn-001-02:50070</value>
+<name>dfs.namenode.http-address.host-cluster.nn2</name>
+<value>host-nn-001-02:50070</value>
 </property>
 
 <property>
 <name>dfs.namenode.shared.edits.dir</name>
-<value>qjournal://lz-edw-nn-001-01:8485;lz-edw-nn-001-02:8485;lz-edw-dn-001-01:8485/lz-edw-cluster</value>
+<value>qjournal://host-nn-001-01:8485;host-nn-001-02:8485;host-dn-001-01:8485/host-cluster</value>
 </property>
 <property>
-<name>dfs.client.failover.proxy.provider.lz-edw-cluster</name>
+<name>dfs.client.failover.proxy.provider.host-cluster</name>
 <value>org.apache.hadoop.hdfs.server.namenode.ha.ConfiguredFailoverProxyProvider</value>
 </property>
 
@@ -223,7 +223,7 @@ limitations under the License. See accompanying LICENSE file.
 ### hive.properties
 ```
 connector.name=hive-hadoop2
-hive.metastore.uri=thrift://lz-edw-nn-001-02:9083
+hive.metastore.uri=thrift://host-nn-001-02:9083
 hive.config.resources=/presto/etc/core-site.xml,/presto/etc/hdfs-site.xml
 ```
 
