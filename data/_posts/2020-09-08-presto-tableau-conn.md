@@ -1,4 +1,4 @@
-# Tableau - Presto
+# Tableau - Presto 연동
 
 - Tableau Desktop으로 presto engine과 연결해 데이터가 들어오는 족족 뿌려주고 싶은 욕망이 생김.
 - Presto JDBC driver 를 받아서 bridge connection으로 연결(Simba presto)
