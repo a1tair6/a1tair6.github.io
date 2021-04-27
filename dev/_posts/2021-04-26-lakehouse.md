@@ -23,5 +23,5 @@
 
 ## 참고
 
-- https://databricks.com/blog/2020/01/30/what-is-a-data-lakehouse.html
-- https://docs.aws.amazon.com/emr/latest/ReleaseGuide/emr-hudi.html
+- [https://databricks.com/blog/2020/01/30/what-is-a-data-lakehouse.html](https://databricks.com/blog/2020/01/30/what-is-a-data-lakehouse.html)
+- [https://docs.aws.amazon.com/emr/latest/ReleaseGuide/emr-hudi.html](https://docs.aws.amazon.com/emr/latest/ReleaseGuide/emr-hudi.html)
