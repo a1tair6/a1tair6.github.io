@@ -19,7 +19,7 @@ discovery.uri=http://presto-qxqmc:8080
   <summary>core-site.xml</summary>
   <p>
 
-```
+```xml
 <?xml version="1.0"?>
 <?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
 <configuration>
@@ -95,7 +95,7 @@ discovery.uri=http://presto-qxqmc:8080
 </details>
 
 ### docker-presto.sh
-```
+```sh
 #!/bin/bash
 echo "ip host-nn-001-01" >> /etc/hosts
 echo "ip host-nn-001-02" >> /etc/hosts
@@ -114,7 +114,7 @@ launcher run
   <summary>hdfs-site.xml</summary>
   <p>
 
-```
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
 <!--
@@ -273,7 +273,7 @@ discovery.uri=http://presto-qxqmc:8080
 ```
 
 ### health_check.sh
-```
+```sh
 #!/bin/bash
 curl --silent presto-qxqmc:8080/v1/node | tr "," "\n" | grep --silent $(hostname -i)
 ```

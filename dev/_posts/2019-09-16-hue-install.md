@@ -80,8 +80,8 @@ ENTRYPOINT ["bash", "start_script.sh"]
 <details>
   <summary>hue.ini</summary>
   <p>
-
-```
+    
+```xml
 # Hue configuration file
 # ===================================
 #
@@ -616,7 +616,7 @@ ENTRYPOINT ["bash", "start_script.sh"]
   <summary>core-site.xml</summary>
   <p>
 
-```
+```xml
 <?xml version="1.0"?>
 <?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
 <configuration>
@@ -693,7 +693,7 @@ ENTRYPOINT ["bash", "start_script.sh"]
 
 
 ## hadoop-env.sh
-```
+```sh
 export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-amd64
 export HADOOP_HOME=/usr/share/hue/hadoop
 export HADOOP_CONF_DIR=${HADOOP_HOME}/etc/hadoop
@@ -709,7 +709,7 @@ export HADOOP_OPTS="$HADOOP_OPTS -Djava.library.path=/usr/share/hue/hadoop/lib/n
 
 
 ## hive-env.sh
-```
+```sh
 export HADOOP_HEAPSIZE=4096
 #
 # Larger heap size may be required when running queries over large number of files or partitions.
@@ -729,7 +729,7 @@ export HIVE_CONF_DIR=${HIVE_HOME}/conf
   <summary>hive-site.xml.spark</summary>
   <p>
 
-```
+```xml
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?xml-stylesheet type="text/xsl" href="configuration.xsl"?><!--
    Licensed to the Apache Software Foundation (ASF) under one or more
@@ -920,7 +920,7 @@ export HIVE_CONF_DIR=${HIVE_HOME}/conf
   <summary>mapreduce-site.xml</summary>
   <p>
 
-```
+```xml
 <?xml version="1.0"?>
 <?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
 <!--
@@ -1073,7 +1073,7 @@ spark.hadoop.fs.s3a.impl=org.apache.hadoop.fs.s3a.S3AFileSystem
   <summary>spark-env.sh</summary>
   <p>
 
-```
+```sh
 export SPARK_HOME=${SPARK_HOME:-/usr/share/hue/spark}
 export YARN_CONF_DIR=${YARN_CONF_DIR:-${HADOOP_HOME}/etc/hadoop}
 export HIVE_SERVER2_THRIFT_PORT=10001
@@ -1120,7 +1120,7 @@ export PYSPARK_DRIVER_PYTHON=/usr/bin/python3
   <summary>yarn-site.xml</summary>
   <p>
 
-```
+```xml
 <?xml version="1.0"?>
 <!--
   Licensed under the Apache License, Version 2.0 (the "License");
@@ -1316,7 +1316,7 @@ export PYSPARK_DRIVER_PYTHON=/usr/bin/python3
   <summary>start_script.sh</summary>
   <p>
 
-```
+```sh
 #!/bin/bash
 
 # Start the solr process

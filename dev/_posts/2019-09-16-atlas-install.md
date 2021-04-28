@@ -34,7 +34,7 @@ docker run -it {images_id} bash
 
 ## maven, hadoop, hive, atlas binary download
 
-```
+```sh
 wget http://xenia.sote.hu/ftp/mirrors/www.apache.org/maven/maven-3/3.3.9/binaries/apache-maven-3.3.9-bin.tar.gz && \
 tar -xvf apache-maven-3.3.9-bin.tar.gz && \
 wget http://apache.mirror.cdnetworks.com/hadoop/common/hadoop-3.1.2/hadoop-3.1.2.tar.gz && \
@@ -49,7 +49,7 @@ rm apache-hive-3.1.1-bin.tar.gz
 ```
 
 ## hadoop, hive, atlas soft link
-```
+```sh
 ln -s /home/atlas/installed/hadoop-3.1.2 /home/atlas/eco_service/hadoop
 ln -s /home/atlas/installed/hive-3.1.1 /home/atlas/eco_service/hive
 ln -s /home/atlas/installed/apache-atlas-sources-2.0.0 /home/atlas/eco_service/atlas
@@ -140,7 +140,7 @@ CMD ["/bin/bash", "-c", "tail -f /home/atlas/eco_service/atlas/logs/application.
   <summary>hive-site.xml</summary>
   <p>
 
-```
+```xml
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?xml-stylesheet type="text/xsl" href="configuration.xsl"?><!--
    Licensed to the Apache Software Foundation (ASF) under one or more
@@ -361,7 +361,7 @@ export HIVE_AUX_JARS_PATH=/home/atlas/eco_service/atlas/hook/hive
   <summary>yarn-site.xml</summary>
   <p>
 
-```
+```xml
 <?xml version="1.0"?>
 <!--
   Licensed under the Apache License, Version 2.0 (the "License");
@@ -556,7 +556,7 @@ export HIVE_AUX_JARS_PATH=/home/atlas/eco_service/atlas/hook/hive
   <summary>hdfs-site.xml</summary>
   <p>
 
-```
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
 <!--
@@ -676,7 +676,7 @@ export HIVE_AUX_JARS_PATH=/home/atlas/eco_service/atlas/hook/hive
   <summary>core-site.xml</summary>
   <p>
 
-```
+```xml
 <?xml version="1.0"?>
 <?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
 <configuration>
@@ -745,7 +745,7 @@ export HIVE_AUX_JARS_PATH=/home/atlas/eco_service/atlas/hook/hive
   <summary>mapred-site.xml</summary>
   <p>
 
-```
+```xml
 <?xml version="1.0"?>
 <?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
 <!--
@@ -858,7 +858,7 @@ export HIVE_AUX_JARS_PATH=/home/atlas/eco_service/atlas/hook/hive
 
 
 ## hadoop-env.sh
-```
+```sh
 export JAVA_HOME=/usr/lib/jvm/java-1.8-openjdk
 export HADOOP_HOME=/home/atlas/eco_service/hadoop
 export HADOOP_CONF_DIR=${HADOOP_HOME}/etc/hadoop
