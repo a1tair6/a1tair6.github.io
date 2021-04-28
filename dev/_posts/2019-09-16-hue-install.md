@@ -79,9 +79,8 @@ ENTRYPOINT ["bash", "start_script.sh"]
 
 <details>
   <summary>hue.ini</summary>
-  
-    
-```xml
+
+```
 # Hue configuration file
 # ===================================
 #

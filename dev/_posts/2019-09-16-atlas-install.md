@@ -68,7 +68,7 @@ export PATH=$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin:$HIVE_HOME/bin:$SPARK_HOME/
 ```
 
 ## atlas build
-```
+```sh
 cd /home/atlas/installed/apache-atlas-sources-2.0.0 && \
 mvn clean -DskipTests package -Pdist,embedded-hbase-solr
 cd /home/atlas/installed/apache-atlas-sources-2.0.0/distro/target && \
@@ -82,12 +82,12 @@ cd /home/atlas/eco_service/apache-atlas-2.0.0
 
 
 ## docker images 생성
-```
+```sh
 docker commit -m "initial atlas" -a "user_id" {container_id} {tag_name}
 ```
 
 ## docker images push
-```
+```sh
 docker push {tag_name}
 ```
 

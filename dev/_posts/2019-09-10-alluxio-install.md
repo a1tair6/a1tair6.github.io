@@ -14,7 +14,7 @@ S3_ENDPOINT		s3.{region}.amazonaws.com
 
 ## alluxio-master yaml
 - rancher workloads에서 import yaml
-```
+```yml
 apiVersion: v1
 kind: Service
 metadata:
@@ -115,7 +115,7 @@ spec:
 ```
 
 ## alluxio-worker yaml
-```
+```yml
 apiVersion: apps/v1
 kind: DaemonSet
 metadata:
