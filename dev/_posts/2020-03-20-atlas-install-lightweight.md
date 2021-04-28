@@ -36,9 +36,9 @@ CMD ["/bin/bash", "-c", "/usr/lib/atlas/bin/atlas_start.py"]
 
 ```
 
-- ** 20200320 build가 안됨. **
-- ** 일단 repo가 변경 된 듯, 추가해서 해결 **
-- ** https://issues.apache.org/jira/browse/ATLAS-3671 이슈는 남겼는데 답변이 있을 지 의문(오래 전 부터 답변이 없음. 포기한 프로젝트인가..) **
+- **20200320 build가 안됨.**
+- **일단 repo가 변경 된 듯, 추가해서 해결**
+- **https://issues.apache.org/jira/browse/ATLAS-3671 이슈는 남겼는데 답변이 있을 지 의문(오래 전 부터 답변이 없음. 포기한 프로젝트인가..)**
 
 
 ## dockerfile
@@ -77,7 +77,7 @@ ENV HADOOP_HOME=/usr/lib/hadoop
 CMD ["/bin/bash", "-c", "/usr/lib/atlas/bin/atlas_start.py; tail -fF /usr/lib/atlas/logs/application.log"]
 ```
 
-- ** issue **
+- **issue**
 	- build 안 됨. pom.xml repo 추가
 	- atlas_config.py, atlas_start.py 소스 수정 후 start 
 	- embedded 된 solr, hbase를 사용하려다 보니 atlas로 띄우면 권한 문제가 발생함. 해서 root로

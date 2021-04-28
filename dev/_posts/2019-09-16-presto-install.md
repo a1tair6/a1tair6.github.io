@@ -15,7 +15,10 @@ discovery-server.enabled=true
 discovery.uri=http://presto-qxqmc:8080
 ```
 
-### core-site.xml
+<details>
+  <summary>core-site.xml</summary>
+  <p>
+
 ```
 <?xml version="1.0"?>
 <?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
@@ -88,6 +91,8 @@ discovery.uri=http://presto-qxqmc:8080
 
 </configuration>
 ```
+</p>
+</details>
 
 ### docker-presto.sh
 ```
@@ -105,7 +110,10 @@ cp /etc/presto/hdfs-site.xml $PRESTO_CONF_DIR
 launcher run
 ```
 
-### hdfs-site.xml
+<details>
+  <summary>hdfs-site.xml</summary>
+  <p>
+
 ```
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
@@ -219,6 +227,8 @@ limitations under the License. See accompanying LICENSE file.
 </property>
 </configuration>
 ```
+</p>
+</details>
 
 ### hive.properties
 ```

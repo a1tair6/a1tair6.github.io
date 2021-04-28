@@ -77,7 +77,10 @@ EXPOSE 8888
 ENTRYPOINT ["bash", "start_script.sh"]
 ```
 
-## hue.ini
+<details>
+  <summary>hue.ini</summary>
+  <p>
+
 ```
 # Hue configuration file
 # ===================================
@@ -605,8 +608,14 @@ ENTRYPOINT ["bash", "start_script.sh"]
       ## key_expiry=14400
 
 ```
+</p>
+</details>
 
-## core-size.xml
+
+<details>
+  <summary>core-site.xml</summary>
+  <p>
+
 ```
 <?xml version="1.0"?>
 <?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
@@ -679,6 +688,9 @@ ENTRYPOINT ["bash", "start_script.sh"]
 
 </configuration>
 ```
+</p>
+</details>
+
 
 ## hadoop-env.sh
 ```
@@ -694,6 +706,7 @@ export YARN_HOME=${HADOOP_HOME}/share/hadoop/yarn
 export HADOOP_CLASSPATH=$HADOOP_CLASSPATH:${HADOOP_CONF_DIR}:${HADOOP_COMMON_HOME}/*:${HADOOP_COMMON_HOME}/lib/*:${HADOOP_HDFS_HOME}/*:${HADOOP_HDFS_HOME}/lib/*:${HADOOP_MAPRED_HOME}/*:${HADOOP_MAPRED_HOME}/lib/*:${HADOOP_YARN_HOME}/*:${HAOOP_YARN_HOME}/lib/*:$HADOOP_HOME/share/hadoop/tools/lib/*
 export HADOOP_OPTS="$HADOOP_OPTS -Djava.library.path=/usr/share/hue/hadoop/lib/native"
 ```
+
 
 ## hive-env.sh
 ```
@@ -711,7 +724,11 @@ HADOOP_HOME=${HADOOP_HOME}
 export HIVE_CONF_DIR=${HIVE_HOME}/conf
 ```
 
-## hive-site.xml.spark
+
+<details>
+  <summary>hive-site.xml.spark</summary>
+  <p>
+
 ```
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?xml-stylesheet type="text/xsl" href="configuration.xsl"?><!--
@@ -896,8 +913,13 @@ export HIVE_CONF_DIR=${HIVE_HOME}/conf
   </property>
 </configuration>
 ```
+</p>
+</details>
 
-## mapreduce-site.xml
+<details>
+  <summary>mapreduce-site.xml</summary>
+  <p>
+
 ```
 <?xml version="1.0"?>
 <?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
@@ -1005,8 +1027,13 @@ export HIVE_CONF_DIR=${HIVE_HOME}/conf
 
 </configuration>
 ```
+</p>
+</details>
 
-## spark-defaults.conf
+<details>
+  <summary>spark-defaults.conf</summary>
+  <p>
+
 ```
 spark.master                     yarn
 spark.submit.deployMode          client
@@ -1039,8 +1066,13 @@ spark.hadoop.fs.s3a.endpoint=s3.{region}.amazonaws.com
 spark.hadoop.fs.s3a.secret.key={secret_key}
 spark.hadoop.fs.s3a.impl=org.apache.hadoop.fs.s3a.S3AFileSystem
 ```
+</p>
+</details>
 
-## spark-env.sh
+<details>
+  <summary>spark-env.sh</summary>
+  <p>
+
 ```
 export SPARK_HOME=${SPARK_HOME:-/usr/share/hue/spark}
 export YARN_CONF_DIR=${YARN_CONF_DIR:-${HADOOP_HOME}/etc/hadoop}
@@ -1081,8 +1113,13 @@ SPARK_DIST_CLASSPATH="$SPARK_DIST_CLASSPATH:$HADOOP_HOME/share/tools/lib/*"
 export PYSPARK_PYTHON=/usr/bin/python3
 export PYSPARK_DRIVER_PYTHON=/usr/bin/python3
 ```
+</p>
+</details>
 
-## yarn-site.xml
+<details>
+  <summary>yarn-site.xml</summary>
+  <p>
+
 ```
 <?xml version="1.0"?>
 <!--
@@ -1271,8 +1308,14 @@ export PYSPARK_DRIVER_PYTHON=/usr/bin/python3
     </property>
 </configuration>
 ```
+</p>
+</details>
 
-## start_script.sh
+
+<details>
+  <summary>start_script.sh</summary>
+  <p>
+
 ```
 #!/bin/bash
 
@@ -1322,3 +1365,5 @@ while sleep 60; do
   fi
 done
 ```
+</p>
+</details>
