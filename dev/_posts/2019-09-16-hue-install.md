@@ -5,7 +5,6 @@
 - 말 그대로 Data Warehouse를 위한 SQL Workbench 오픈 소스입니다.
 - 주로 oozie property와 workflow를 ui로 생성 해주는 이점이 있습니다.
 - 다양한 설치 방법이 있지만 hue docker images 사용합니다.
-
 - hue docker url : [https://github.com/cloudera/hue/tree/master/tools/docker](https://github.com/cloudera/hue/tree/master/tools/docker)
 
 ## dockerfile
@@ -111,9 +110,7 @@ export HIVE_CONF_DIR=${HIVE_HOME}/conf
 ```
 
 
-<details>
-  <summary>start_script.sh</summary>
-  
+## start_script.sh
 
 ```sh
 #!/bin/bash
@@ -164,5 +161,3 @@ while sleep 60; do
   fi
 done
 ```
-
-</details>

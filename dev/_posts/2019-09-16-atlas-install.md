@@ -97,7 +97,7 @@ docker push {tag_name}
 
 ## hadoop, atlas, hive config setting
 ```
-FROM docker.lezhin.com/dw-util-atlas:0.1
+FROM {docker url}/dw-util-atlas:0.1
 MAINTAINER aiden
 
 USER atlas
@@ -152,6 +152,3 @@ export HADOOP_CLASSPATH=$HADOOP_CLASSPATH:${HADOOP_CONF_DIR}:${HADOOP_COMMON_HOM
 
 ## Apache Atlas Hook & Bridge for Apache Hive
 - import-hive.sh 실행
-```
-
-```
