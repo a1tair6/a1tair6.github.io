@@ -138,7 +138,7 @@ CMD ["/bin/bash", "-c", "tail -f /home/atlas/eco_service/atlas/logs/application.
 
 <details>
   <summary>hive-site.xml</summary>
-  <p>
+  
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
@@ -348,7 +348,7 @@ CMD ["/bin/bash", "-c", "tail -f /home/atlas/eco_service/atlas/logs/application.
 
 </configuration>
 ```
-</p>
+
 </details>
 
 
@@ -359,7 +359,7 @@ export HIVE_AUX_JARS_PATH=/home/atlas/eco_service/atlas/hook/hive
 
 <details>
   <summary>yarn-site.xml</summary>
-  <p>
+  
 
 ```xml
 <?xml version="1.0"?>
@@ -549,12 +549,12 @@ export HIVE_AUX_JARS_PATH=/home/atlas/eco_service/atlas/hook/hive
     </property>
 </configuration>
 ```
-</p>
+
 </details>
 
 <details>
   <summary>hdfs-site.xml</summary>
-  <p>
+  
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -669,12 +669,12 @@ export HIVE_AUX_JARS_PATH=/home/atlas/eco_service/atlas/hook/hive
   </property>
 </configuration>
 ```
-</p>
+
 </details>
 
 <details>
   <summary>core-site.xml</summary>
-  <p>
+  
 
 ```xml
 <?xml version="1.0"?>
@@ -737,13 +737,13 @@ export HIVE_AUX_JARS_PATH=/home/atlas/eco_service/atlas/hook/hive
 
 </configuration>
 ```
-</p>
+
 </details>
 
 
 <details>
   <summary>mapred-site.xml</summary>
-  <p>
+  
 
 ```xml
 <?xml version="1.0"?>
@@ -852,7 +852,7 @@ export HIVE_AUX_JARS_PATH=/home/atlas/eco_service/atlas/hook/hive
 
 </configuration>
 ```
-</p>
+
 </details>
 
 

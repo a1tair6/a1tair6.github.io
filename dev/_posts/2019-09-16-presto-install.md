@@ -17,7 +17,7 @@ discovery.uri=http://presto-qxqmc:8080
 
 <details>
   <summary>core-site.xml</summary>
-  <p>
+  
 
 ```xml
 <?xml version="1.0"?>
@@ -91,7 +91,7 @@ discovery.uri=http://presto-qxqmc:8080
 
 </configuration>
 ```
-</p>
+
 </details>
 
 ### docker-presto.sh
@@ -112,7 +112,7 @@ launcher run
 
 <details>
   <summary>hdfs-site.xml</summary>
-  <p>
+  
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -227,7 +227,7 @@ limitations under the License. See accompanying LICENSE file.
 </property>
 </configuration>
 ```
-</p>
+
 </details>
 
 ### hive.properties

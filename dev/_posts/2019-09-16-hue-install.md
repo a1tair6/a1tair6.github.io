@@ -79,7 +79,7 @@ ENTRYPOINT ["bash", "start_script.sh"]
 
 <details>
   <summary>hue.ini</summary>
-  <p>
+  
     
 ```xml
 # Hue configuration file
@@ -608,13 +608,13 @@ ENTRYPOINT ["bash", "start_script.sh"]
       ## key_expiry=14400
 
 ```
-</p>
+
 </details>
 
 
 <details>
   <summary>core-site.xml</summary>
-  <p>
+  
 
 ```xml
 <?xml version="1.0"?>
@@ -688,7 +688,7 @@ ENTRYPOINT ["bash", "start_script.sh"]
 
 </configuration>
 ```
-</p>
+
 </details>
 
 
@@ -727,7 +727,7 @@ export HIVE_CONF_DIR=${HIVE_HOME}/conf
 
 <details>
   <summary>hive-site.xml.spark</summary>
-  <p>
+  
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
@@ -913,12 +913,12 @@ export HIVE_CONF_DIR=${HIVE_HOME}/conf
   </property>
 </configuration>
 ```
-</p>
+
 </details>
 
 <details>
   <summary>mapreduce-site.xml</summary>
-  <p>
+  
 
 ```xml
 <?xml version="1.0"?>
@@ -1027,12 +1027,12 @@ export HIVE_CONF_DIR=${HIVE_HOME}/conf
 
 </configuration>
 ```
-</p>
+
 </details>
 
 <details>
   <summary>spark-defaults.conf</summary>
-  <p>
+  
 
 ```
 spark.master                     yarn
@@ -1066,12 +1066,12 @@ spark.hadoop.fs.s3a.endpoint=s3.{region}.amazonaws.com
 spark.hadoop.fs.s3a.secret.key={secret_key}
 spark.hadoop.fs.s3a.impl=org.apache.hadoop.fs.s3a.S3AFileSystem
 ```
-</p>
+
 </details>
 
 <details>
   <summary>spark-env.sh</summary>
-  <p>
+  
 
 ```sh
 export SPARK_HOME=${SPARK_HOME:-/usr/share/hue/spark}
@@ -1113,12 +1113,12 @@ SPARK_DIST_CLASSPATH="$SPARK_DIST_CLASSPATH:$HADOOP_HOME/share/tools/lib/*"
 export PYSPARK_PYTHON=/usr/bin/python3
 export PYSPARK_DRIVER_PYTHON=/usr/bin/python3
 ```
-</p>
+
 </details>
 
 <details>
   <summary>yarn-site.xml</summary>
-  <p>
+  
 
 ```xml
 <?xml version="1.0"?>
@@ -1308,13 +1308,13 @@ export PYSPARK_DRIVER_PYTHON=/usr/bin/python3
     </property>
 </configuration>
 ```
-</p>
+
 </details>
 
 
 <details>
   <summary>start_script.sh</summary>
-  <p>
+  
 
 ```sh
 #!/bin/bash
@@ -1365,5 +1365,5 @@ while sleep 60; do
   fi
 done
 ```
-</p>
+
 </details>
