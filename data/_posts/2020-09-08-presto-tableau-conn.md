@@ -4,4 +4,4 @@
 - Presto JDBC driver 를 받아서 bridge connection으로 연결(Simba presto)
 - presto worker가 충분하지 않아서 너무 느림. 포기...
 
-![tableau_presto.png](./assets/img/cus/data/tableau_presto.png)
+![tableau_presto.png](/assets/img/cus/data/tableau_presto.png)
