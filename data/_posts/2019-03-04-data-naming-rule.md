@@ -18,7 +18,7 @@
 |||구매 관리(Buy Management, B)||||
 |||쿠폰 관리(Redeem Management, R)||||
 ||구성관리(Configuration Management, CF)|구성관리(Configuration Management, C)|D_CF|dcf||
-|||위치품질관리(Location Quality Management, L)|D_CF|dcf||
+|||품질관리(Quality Management, L)|D_CF|dcf||
 ||서비스관리(Service Management, SM) / 고객관리(Customer Management, CM)|고객체감품질관리(Customer Feel Quality Management, F)|D_CM|dcm||
 |||고객관리(Customer Management, C)||||
 |||구독관리(Subscription Management, S)||||
