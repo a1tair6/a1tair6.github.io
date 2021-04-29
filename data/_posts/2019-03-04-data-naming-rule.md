@@ -5,6 +5,8 @@
 - data governance 의 일환
 
 ## 주제영역
+
+
 |영역 구분|주제영역 1 level|주제영역 2 level|database 명|table prefix|description|
 |---|---|---|---|---|---|
 |통합 영역(DW)|공통관리(Common Management, CM)|공통코드관리(Common Code Management, C)|D_CO|dco||
@@ -35,8 +37,8 @@
 
 ## Table naming rule
 - Prefix는 주제영역(Database) 에서 테이블Prefix.
-- {prefix}_{table 성격에 따른 Name}_{version}_{master|History}_{Period}
-- {prefix}_{table 성격에 따른 Name}_{master|history}_{sql|ds|nosql}_{Partition Period}
+- `{prefix}_{table 성격에 따른 Name}_{version}_{master|History}_{Period}`
+- `{prefix}_{table 성격에 따른 Name}_{master|history}_{sql|ds|nosql}_{Partition Period}`
 - ex) DW 영역의 1일 파티션 상품 클릭 히스토리 테이블 → d_cm.dcm_product_user_click_count_hst_1d
 
 ## storage naming rule
