@@ -8,7 +8,7 @@
   - Ignore
 
 - spark-sql lib - JdbcRelationProvider 코드
-- [spark_savemode.png](/assets/img/cus/dev/spark_savemode.png)
+- ![spark_savemode.png](/assets/img/cus/dev/spark_savemode.png)
 
 
 - ON DUPLICATE KEY UPDATE 쿼리 해야 할 일이 생김.
