@@ -1,4 +1,4 @@
-# What is a LakHouse?
+# What is a LakeHouse?
 
 - 작년 2020년 1월에 Lakehouse라는 paradigm 나옴.
 - 1980's data warehouse
